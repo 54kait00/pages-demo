@@ -1,0 +1,479 @@
+@import "_clients.less";
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0px;
+    margin: 0px;
+}
+
+img {
+    display: block;
+}
+
+.container {
+    display: block;
+    margin: 0 auto;
+    width: 1080px;
+}
+
+.clearfix:after,
+.row:after {
+    display: table;
+    content: "";
+    clear: both;
+}
+
+/*header*/
+
+#header {
+    padding: 0 30px;
+    
+
+    .logo {
+
+        float: left;
+    }
+
+    .nav {
+        float: right;
+
+        li {
+            float: left;
+
+            a {
+                display: inline-block;
+                padding: 0 12px;
+                color: #333333;
+                line-height: 100px;
+                font-size: 13px;
+                text-decoration: none;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            &.active {
+                a {
+                    color: #D6B161;
+                }
+            }
+
+            &.boundary:after {
+                content: "|";
+                padding: 0 12px;
+            }
+
+        }
+
+    }
+}
+
+#header,
+.logo,
+ul {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+.row {
+    margin: 0 -30px;
+}
+
+
+/*content*/
+
+#content {
+    >div {
+        padding-top: 100px ;
+    }
+
+    >div:first-child {
+        padding-top: 0;
+    }
+
+    .header {
+        .container {
+            padding: 50px 0
+        }
+        background: #F5F5F5;
+    }
+
+    h3.title {
+        float: left;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: normal;
+        margin: 0;
+        font-size: 18px;
+    }
+
+    #breadcrumbs {
+        float: right;
+
+        li {
+            padding: 0 5px;
+            float: left;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+
+            &:after {
+                content: "/";
+                padding-left: 10px;
+                color: #7E7E7E;
+            }
+
+            &:last-child:after {
+                content: "";
+            }
+
+            a {
+                display: inline-block;
+                text-decoration: none;
+                color: #7E7E7E;
+            }
+
+        }
+    }
+
+    .team-member {
+        .container {
+            padding-top: 0;
+        }
+
+        .intro {
+            display: inline-block;
+            padding-bottom: 80px;
+            text-decoration: uppercase;
+
+            p {
+                width: 60%;
+                /*remember*/
+                margin: 0 auto;
+                color: #7E7E7E;
+                text-align: center;
+                font-size: 26px;
+                font-weight: normal;
+                line-height: 36px;
+            }
+
+        }
+
+        .info {
+            padding: 20px 0;
+        }
+
+        .member-name {
+            margin: 0;
+            color: #323232;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: normal;
+            letter-spacing: 1px;
+            line-height: 1.5;
+        }
+
+        .member-title {
+            display: inline-block;
+            margin: 0;
+            font-size: 12px;
+            color: #a5A5A5;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+    }
+
+    .col-4 {
+        float: left;
+        width: 33.3333%;
+        padding: 0 30px;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        /*need to review--OKK*/
+        .thumbnail {
+            position: relative;
+
+            .cover {
+                border: 20px solid rgba(0, 0, 0, 0.1);
+                background-color: rgba(255, 255, 255, 0.9);
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                // width: 100%;
+                // height: 100%;
+                // 可以設定基準點為top:0,然後用寬跟高100%去占滿parent
+                // 也可以設定上下左右0,去占滿parent (前提不能設定自己的寬高)
+                opacity: 0;
+
+                &:hover {
+                    opacity: 1;
+                    transition: opacity 1s 0s ease;
+                    // transition: opacity(要變更的元素) 1s(淡入時間) 0s(延遲時間) ease(速率);
+                }
+
+                h3 {
+                    margin: 40px 0;
+                    color: #222;
+                    text-align: center;
+                    text-transform: uppercase;
+                    letter-spacing: 4px;
+                    font-weight: normal;
+                    font-size: 15px;
+                }
+
+                p {
+                    padding: 0 10px;
+                    text-align: center;
+                    color: #7e7e7e;
+                    font-size: 14px;
+                    line-height: 30px;
+
+                }
+
+                /*下面重看 1.ul display 2.social-media : position*/
+                .social-media {
+                    position: absolute;
+                    bottom: 20px;
+                    // 設定Position,bottom要調整位置
+                    width: 100%;
+                    // 設定和parent一樣的寬
+                    text-align: center;
+
+                    ul {
+                        display: inline-block;
+                        // ul deafault display is block
+                        // 要變成inline-block才可以設定text-align:center (設定text-align是設定文字/內容)
+                    }
+
+                    li {
+                        float: left;
+                        padding: 0 10px;
+
+                        a {
+                            color: black;
+                            text-decoration: none;
+
+                            &:hover {
+                                color: #D6B161;
+                                opacity: 1;
+                                transition: 1s 0s ease;
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .promotion {
+
+       
+        padding-bottom: 100px;
+
+        .container {
+
+            background: #f5f5f5;
+            padding: 40px;
+
+        }
+
+        .promotion-info {
+            float: left;
+
+            .title {
+                margin: 0;
+                font-size: 18px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-weight: normal;
+
+                .golden {
+                    color: #D6B161;
+                }
+            }
+
+            p {
+                color: #7e7e7e;
+                margin-bottom: 0;
+            }
+
+
+        }
+
+        .button {
+            float: right;
+
+            a {
+                display: inline-block;
+                border: 2px solid black;
+                padding: 15px 30px;
+                background: #222;
+                color: white;
+                text-decoration: none;
+                text-transform: uppercase;
+                border-radius: 4px;
+            }
+        }
+    }
+}
+
+#footer {
+    background: #222222;
+
+    .info {
+        padding: 80px 0;
+    }
+
+    .col-3 {
+        float: left;
+        width: 25%;
+        padding: 0 30px;
+
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        >img {
+            margin: 0;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #7e7e7e;
+            line-height: 30px;
+            text-transform: capitalize;
+        }
+
+        .title {
+            margin: 0;
+            margin-bottom: 30px;
+            color: white;
+            text-transform: uppercase;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+
+        .common-list {
+
+            li {
+                border-bottom: 1px solid #333; // list下面的橫線
+
+                a {
+                    display: block; // 一整行都能被點到
+                    color: #A2A2A2;
+                    text-transform: capitalize;
+                    text-decoration: none;
+                    line-height: 45px;
+
+                    &:before {
+                        content: ">";
+                        padding-right: 15px;
+
+                    }
+
+                    &:hover {
+                        color: #D6B161;
+                        // opacity: 1;
+                        transition: 1s 0s ease;
+                    }
+                }
+            }
+
+        }
+
+        .thumbnail {
+            li {
+                float: left;
+
+                a {
+                    display: inline-block; //A default display is inline~~~~~~~!!!!! img已經被設定block,a也要設定成block
+                    margin: 0 10px 10px 0;
+
+                }
+            }
+        }
+    }
+
+    .dark-footer {
+        padding: 35px 0;
+        background: #1b1b1b;
+        color: #6f7273;
+
+        .copyright {
+            float: left;
+
+            .title {
+                margin-top: 15px;
+                text-transform: capitalize;
+            }
+
+            a {
+                color: white;
+                text-decoration: none;
+            }
+
+        }
+
+        .social-media {
+            float: right;
+
+            li {
+                float: left;
+            }
+
+            a {
+                display: inline-block;
+                margin-left: 15px;
+                width: 40px;
+                height: 40px;
+                border: 1px solid #5a5a5a;
+                border-radius: 20px; //WH都是40;圓圈設定一半
+                text-align: center;
+                line-height: 40px;
+                color: #5a5a5a;
+                text-decoration: none;
+                font-size: 20px;
+                &:hover{
+                    color:white;
+                    background: #6f7273;
+                    transition: 1s ease;
+                }
+            }
+        }
+    }
+}
+
+.go-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.1);
+    text-align: center;
+    line-height: 40px;
+    text-decoration: none;
+    color: white;
+}
